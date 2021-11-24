@@ -1,7 +1,7 @@
 # Problem Set 2, hangman.py
 # Name: Anton
 # Collaborators:
-# Time spent: 
+# Time spent: 5 hours
 
 # Hangman Game
 # -----------------------------------
@@ -50,6 +50,14 @@ wordlist = load_words()
 
 
 def is_word_guessed(secret_word, letters_guessed):
+    '''
+    secret_word: string, the word the user is guessing; assumes all letters are
+      lowercase
+    letters_guessed: list (of letters), which letters have been guessed so far;
+      assumes that all letters are lowercase
+    returns: boolean, True if all the letters of secret_word are in letters_guessed;
+      False otherwise
+    '''
     list_of_secwor = list(secret_word)
     stri = ''
     for i in list_of_secwor:
@@ -62,6 +70,12 @@ def is_word_guessed(secret_word, letters_guessed):
 
 
 def get_guessed_word(secret_word, letters_guessed):
+    '''
+    secret_word: string, the word the user is guessing
+    letters_guessed: list (of letters), which letters have been guessed so far
+    returns: string, comprised of letters, underscores (_), and spaces that represents
+      which letters in secret_word have been guessed so far.
+    '''
     list_of_secwor = list(secret_word)
     for i in list_of_secwor:
       if i in letters_guessed:
@@ -73,6 +87,11 @@ def get_guessed_word(secret_word, letters_guessed):
 
 
 def get_available_letters(letters_guessed):
+    '''
+    letters_guessed: list (of letters), which letters have been guessed so far
+    returns: string (of letters), comprised of letters that represents which letters have not
+      yet been guessed.
+    '''
     list_of_all = list(string.ascii_lowercase)
     for i in letters_guessed:
       if i in list_of_all:
@@ -85,6 +104,30 @@ def get_available_letters(letters_guessed):
     
 
 def hangman(secret_word):
+    '''
+    secret_word: string, the secret word to guess.
+    
+    Starts up an interactive game of Hangman.
+    
+    * At the start of the game, let the user know how many 
+      letters the secret_word contains and how many guesses s/he starts with.
+      
+    * The user should start with 6 guesses
+
+    * Before each round, you should display to the user how many guesses
+      s/he has left and the letters that the user has not yet guessed.
+    
+    * Ask the user to supply one guess per round. Remember to make
+      sure that the user puts in a letter!
+    
+    * The user should receive feedback immediately after each guess 
+      about whether their guess appears in the computer's word.
+
+    * After each guess, you should display to the user the 
+      partially guessed word so far.
+    
+    Follows the other limitations detailed in the problem write-up.
+    '''
     num_of_guesses = 6
     num_of_warnings = 3
     print('You have', num_of_warnings, 'warnings left')
